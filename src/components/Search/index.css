@@ -1,0 +1,20 @@
+.search-background-color {
+  background-color: #262522;
+}
+
+.search-max {
+  max-width: 20px;
+  max-height: 20px;
+}
+
+.search-btn-color {
+  background-color: #A6A39F;
+}
+
+.search-placeholder-color {
+  color: #ffffff
+}
+
+.search-img-movies {
+  height: 200px;
+}

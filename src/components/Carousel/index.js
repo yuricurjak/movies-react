@@ -6,37 +6,39 @@ import dublin from '../../assets/dublin.jpg';
 
 export default function Carousel() {
   return (
-    <div className="container">
-      <div id="carouselMovies" class="carousel slide carousel-fade" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselMovies" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselMovies" data-slide-to="1"></li>
-          <li data-target="#carouselMovies" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src={paris} class="d-block w-100 max-height" alt="..."/>
-            <div class="carousel-caption d-none d-md-block">
-              <h5>First slide label</h5>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+    <section>
+      <div className="container p-0">
+        <div id="carouselMovies" className="carousel slide carousel-fade" data-ride="carousel">
+          <ol className="carousel-indicators">
+            <li data-target="#carouselMovies" data-slide-to="0" className="active"></li>
+            <li data-target="#carouselMovies" data-slide-to="1"></li>
+            <li data-target="#carouselMovies" data-slide-to="2"></li>
+          </ol>
+          <div className="carousel-inner">
+            <div className="carousel-item active">
+              <img src={paris} className="d-block w-100 carousel-max-height" alt="..."/>
+              <div className="carousel-caption d-none d-md-block">
+                <h5>First slide label</h5>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+              </div>
             </div>
-          </div>
-          <div class="carousel-item">
-            <img src={california} class="d-block w-100 max-height" alt="..."/>
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Second slide label</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <div className="carousel-item">
+              <img src={california} className="d-block w-100 carousel-max-height" alt="..."/>
+              <div className="carousel-caption d-none d-md-block">
+                <h5>Second slide label</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
             </div>
-          </div>
-          <div class="carousel-item">
-            <img src={dublin} class="d-block w-100 max-height" alt="..." />
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Third slide label</h5>
-              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            <div className="carousel-item">
+              <img src={dublin} className="d-block w-100 carousel-max-height" alt="..." />
+              <div className="carousel-caption d-none d-md-block">
+                <h5>Third slide label</h5>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
