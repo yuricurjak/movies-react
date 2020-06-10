@@ -12,7 +12,7 @@ export default function Search() {
               <div className="input-group">
                 <input type="text" className="form-control search-background-color search-placeholder-color" placeholder="Buscar por filmes" aria-label="Buscar por filmes" aria-describedby="Buscar por filmes"/>
                 <div className="input-group-append">
-                  <button class="btn search-btn-color d-flex" type="button">
+                  <button className="btn search-btn-color d-flex" type="button">
                     <img className="search-max align-self-center" src={videoButton} alt="Pesquisar"/>
                   </button>
                 </div>
@@ -20,7 +20,7 @@ export default function Search() {
             </form>
           </div>
         </div>
-        <div className="row text-center my-2">
+        <div className="row text-center mt-3">
           <div className="col-xl-3 col-md-6 text-white">
             <div className="search-img-movies d-flex justify-content-center">
               <img className="h-100 w-100" src={videoButton} alt="Passaport"/>

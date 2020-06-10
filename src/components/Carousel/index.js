@@ -1,10 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './index.css';
-import paris from '../../assets/paris.jpg';
-import california from '../../assets/california.jpg';
-import dublin from '../../assets/dublin.jpg';
+import api from '../../services/api';
 
 export default function Carousel() {
+  const [trendingMovies, setTrendingMovies] = useState([]);
+
+  useEffect(() => {
+    async function getTrendingMovies() {
+      const { data: { results } } = await api.get(
+        '/trending/movie/week?language=pt-BR&region=BR',
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
+          }
+        }
+      );
+      
+      setTrendingMovies(results.slice(0, 3));
+
+      console.log(trendingMovies);
+    }
+    getTrendingMovies();
+  }, [trendingMovies.length]);
+
+
   return (
     <section>
       <div className="container p-0">
@@ -15,27 +34,16 @@ export default function Carousel() {
             <li data-target="#carouselMovies" data-slide-to="2"></li>
           </ol>
           <div className="carousel-inner">
-            <div className="carousel-item active">
-              <img src={paris} className="d-block w-100 carousel-max-height" alt="..."/>
+            {trendingMovies.length > 0 && trendingMovies.map(movie => (
+            <div key={movie.id} className={`carousel-item ${movie == trendingMovies[0] ? 'active':''}` }>
+              <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} className="d-block w-100 carousel-max-height" alt="..."/>
               <div className="carousel-caption d-none d-md-block">
-                <h5>First slide label</h5>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                <h5>{movie.title}</h5>
+                <p>{movie.overview}</p>
               </div>
             </div>
-            <div className="carousel-item">
-              <img src={california} className="d-block w-100 carousel-max-height" alt="..."/>
-              <div className="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </div>
-            </div>
-            <div className="carousel-item">
-              <img src={dublin} className="d-block w-100 carousel-max-height" alt="..." />
-              <div className="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-              </div>
-            </div>
+            ))
+            }
           </div>
         </div>
       </div>
