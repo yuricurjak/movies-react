@@ -1,25 +1,28 @@
 import React, { useState } from 'react';
 import videoButton from '../../assets/video.svg';
+import Modal from '../Modal';
 import api from '../../services/api';
 import './index.css';
 
 export default function Search() {
   const [movieName, setMovieName] = useState('');
   const [searchMovies, setSearchMovies] = useState([]);
+
   async function submitMovies() {
-      const { data: { results } } = await api.get(
-        `/search/movie?language=pt-BR&region=BR$&query=${movieName}`,
-        {
-          headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
-          }
+    const { data: { results } } = await api.get(
+      `/search/movie?language=pt-BR&region=BR$&query=${movieName}`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
         }
-      );
-      results.length < 4 ? setSearchMovies(results.slice(0, results.length)) : setSearchMovies(results.slice(0, 4));
+      }
+    );
+    results.length < 4 ? setSearchMovies(results.slice(0, results.length)) : setSearchMovies(results.slice(0, 4));
   }
 
   return (
-    <section>
+    <>
+      <section>
       <div className="container search-background-color">
         <div className="row py-4 justify-content-center">
           <div className="col-md-6">
@@ -51,9 +54,9 @@ export default function Search() {
             </h3>
           </div>
           }
-          
         </div>
       </div>
     </section>
+    </>
   );
 }
