@@ -17,16 +17,15 @@ export default function Carousel() {
       );
       
       setTrendingMovies(results.slice(0, 3));
-
-      console.log(trendingMovies);
     }
     getTrendingMovies();
-  }, [trendingMovies.length]);
+  }, []);
 
 
   return (
     <section>
       <div className="container p-0">
+        {trendingMovies.length ? (
         <div id="carouselMovies" className="carousel slide carousel-fade" data-ride="carousel">
           <ol className="carousel-indicators">
             <li data-target="#carouselMovies" data-slide-to="0" className="active"></li>
@@ -35,8 +34,8 @@ export default function Carousel() {
           </ol>
           <div className="carousel-inner">
             {trendingMovies.length > 0 && trendingMovies.map(movie => (
-            <div key={movie.id} className={`carousel-item ${movie == trendingMovies[0] ? 'active':''}` }>
-              <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} className="d-block w-100 carousel-max-height" alt="..."/>
+            <div key={movie.id} className={`carousel-item ${movie === trendingMovies[0] ? 'active':''}` }>
+              <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} className="d-block w-100 carousel-max-height" alt="Destaques da semana"/>
               <div className="carousel-caption d-none d-md-block">
                 <h5>{movie.title}</h5>
                 <p>{movie.overview}</p>
@@ -45,7 +44,20 @@ export default function Carousel() {
             ))
             }
           </div>
-        </div>
+          <a className="carousel-control-prev" href="#carouselMovies" role="button" data-slide="prev">
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span className="sr-only">Previous</span>
+          </a>
+          <a className="carousel-control-next" href="#carouselMovies" role="button" data-slide="next">
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="sr-only">Next</span>
+          </a>
+          </div>
+        ): (
+          <div style={{"height": "400px"}}>
+
+          </div>
+        )}
       </div>
     </section>
   );
