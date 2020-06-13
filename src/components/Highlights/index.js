@@ -33,7 +33,7 @@ export default function Highlights() {
 
   return (
     <>
-      <Modal sinopse={sinopseText}/>
+      <Modal id={'sinopseHighlights'} sinopse={sinopseText}/>
       <section>
         <div className="container py-4 highlights-background-color">
           <div className="text-center py-4">
@@ -49,7 +49,7 @@ export default function Highlights() {
                   <h5 className="card-title highlights-title-card-height">{popularMovie.title}</h5>
                   <p className="card-text">Média dos votos: {popularMovie.vote_average}</p>
                   <p className="card-text">Data de lançamento: {formatDate(popularMovie.release_date)}</p>
-                  <a data-toggle="modal" data-target="#sinopseModal" onClick={() => setSinopseText(popularMovie.overview)} className="btn highlights-btn-color text-white ">Ver Sinopse</a>
+                  <button data-toggle="modal" data-target="#sinopseHighlights" onClick={() => setSinopseText(popularMovie.overview)} className="btn highlights-btn-color text-white ">Ver Sinopse</button>
                 </div>
               </div>
             </div>

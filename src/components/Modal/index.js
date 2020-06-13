@@ -4,7 +4,7 @@ import './index.css';
 export default props => {
 
   return (
-    <div className="modal fade" id="sinopseModal" tabIndex="-1" role="dialog" aria-labelledby="sinopseModalLabel" aria-hidden="true">
+    <div className="modal fade" id={props.id} tabIndex="-1" role="dialog" aria-labelledby="sinopseModalLabel" aria-hidden="true">
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">

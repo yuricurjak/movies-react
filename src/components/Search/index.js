@@ -6,6 +6,7 @@ import './index.css';
 
 export default function Search() {
   const [movieName, setMovieName] = useState('');
+  const [sinopseText, setSinopseText] = useState('');
   const [searchMovies, setSearchMovies] = useState([]);
 
   async function submitMovies() {
@@ -22,6 +23,7 @@ export default function Search() {
 
   return (
     <>
+      <Modal id={'sinopseSearch'} sinopse={sinopseText}/>
       <section>
       <div className="container search-background-color">
         <div className="row py-4 justify-content-center">
@@ -41,7 +43,7 @@ export default function Search() {
         </div>
         <div className="row text-center mt-3 justify-content-center">
           {searchMovies.length > 0 ? searchMovies.map( movie => (
-          <div key={movie.id} className="col-xl-3 col-md-6 text-white">
+          <div key={movie.id} data-toggle="modal" data-target="#sinopseSearch" onClick={() => setSinopseText(movie.overview)} className="col-xl-3 col-md-6 text-white">
             <div className="search-img-movies d-flex justify-content-center">
               <img className="h-100 w-100" src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="Filme resultado da pesquisa"/>
             </div>
